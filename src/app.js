@@ -10,6 +10,8 @@ window.onload = function() {
   for (var i = 0, l = matches.length; i < l; i++)
     result.push(matches[i].outerHTML);
 
+  result = result.sort(() => Math.random() - 0.5);
+
   const inputCards = document.querySelector('input[name="cardsToDraw"]');
   var numberOfCards = inputCards.value || 0;
   inputCards.addEventListener("change", function(e) {
@@ -22,9 +24,7 @@ window.onload = function() {
       deck.innerHTML = "";
       for (let i = 0; i < numberOfCards; i++) {
         let mf = Math.floor(Math.random() * result.length);
-        deck.innerHTML += contains.call(positions, mf)
-          ? positions.push(mf)
-          : result[mf];
+        deck.innerHTML += result[i];
       }
     }
   });
