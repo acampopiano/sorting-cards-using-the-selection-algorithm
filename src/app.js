@@ -5,6 +5,7 @@ import "./assets/img/4geeks.ico";
 
 window.onload = function() {
   var positions = [],
+    selectedCards = [],
     result = [],
     matches = document.querySelectorAll("#vCard .card");
   for (var i = 0, l = matches.length; i < l; i++)
@@ -22,12 +23,13 @@ window.onload = function() {
   btnDraw.addEventListener("click", function() {
     if (numberOfCards >= 0 && numberOfCards <= 52) {
       deck.innerHTML = "";
-      positions = [];
+      positions, (selectedCards = []);
       for (let i = 0; i < numberOfCards; i++) {
         let mf = Math.floor(Math.random() * result.length);
         if (!contains.call(positions, mf)) {
           deck.innerHTML += result[mf];
           positions.push(mf);
+          selectedCards.push(result[mf]);
         } else --i;
       }
     }
