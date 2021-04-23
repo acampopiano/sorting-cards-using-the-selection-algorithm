@@ -2,7 +2,7 @@
 import "bootstrap";
 import "./style.css";
 import "./assets/img/4geeks.ico";
-
+import { bubbleSort } from "./bubbleSort.js";
 window.onload = function() {
   var positions = [],
     selectedCards = [],
