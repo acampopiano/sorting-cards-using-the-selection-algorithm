@@ -4,7 +4,7 @@ import "./style.css";
 import "./assets/img/4geeks.ico";
 
 window.onload = function() {
-  var result = [],
+  /*var result = [],
     matches = document.querySelectorAll("#vCard .card");
   for (var i = 0, l = matches.length; i < l; i++)
     result.push(matches[i].outerHTML);
@@ -14,5 +14,11 @@ window.onload = function() {
   btn.addEventListener("click", function() {
     document.getElementById("deck").innerHTML =
       result[Math.floor(Math.random() * result.length)];
+  });*/
+  var numberOfCards = document.getElementById("cardsToDraw").value;
+  let btnDraw = document.getElementById("btnDraw");
+  btnDraw.addEventListener("click", function() {
+    if (numberOfCards > 0) {
+    }
   });
 };
