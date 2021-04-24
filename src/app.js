@@ -46,7 +46,7 @@ window.onload = function() {
         let matches = parseInt(indexNumber[0].match(regex));
         arrCardsNumbers.push(matches);
       });
-      orderedArrayWithBubbleSort = bubbleSort(arrCardsNumbers);
+      orderedArrayWithBubbleSort = selectSort(arrCardsNumbers);
 
       for (let i = 0; i < orderedArrayWithBubbleSort.length; i++) {
         for (let j = 0; j < selectedCards.length; j++) {
@@ -85,20 +85,17 @@ window.onload = function() {
     return indexOf.call(this, needle) > -1;
   };
 
-  const bubbleSort = arr => {
-    let wall = arr.length - 1; //iniciamos el wall o muro al final del array
-    while (wall > 0) {
-      let index = 0;
-      while (index < wall) {
-        //comparar las posiciones adyacentes, si la correcta es más grande, tenemos que intercambiar
-        if (arr[index] > arr[index + 1]) {
-          let aux = arr[index];
-          arr[index] = arr[index + 1];
-          arr[index + 1] = aux;
+  const selectSort = arr => {
+    let min = 0;
+    while (min < arr.length - 1) {
+      for (let i = min + 1; i < arr.length - 1; i++) {
+        if (arr[min] > arr[i]) {
+          let aux = arr[min];
+          arr[min] = arr[i];
+          arr[i] = aux;
         }
-        index++;
       }
-      wall--; //disminuir la pared para optimizar
+      min++;
     }
     return arr;
   };
