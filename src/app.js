@@ -19,6 +19,7 @@ window.onload = function() {
     numberOfCards = this.value;
   });
   let btnDraw = document.getElementById("btnDraw");
+  let btnSort = document.getElementById("btnSort");
   let deck = document.getElementById("deck");
   btnDraw.addEventListener("click", function() {
     if (numberOfCards >= 0 && numberOfCards <= 52) {
@@ -34,7 +35,16 @@ window.onload = function() {
       }
     }
   });
-
+  btnSort.addEventListener("click", function() {
+    if (selectedCards.length) {
+      selectedCards.map(function(input) {
+        let arrCards = [];
+        let expresion = /<(.*?)>/g;
+        let indexNumber = input.matchAll(expresion);
+        alert(indexNumber[1]);
+      });
+    }
+  });
   var contains = function(needle) {
     // Per spec, the way to identify NaN is that it is not equal to itself
     var findNaN = needle !== needle;
