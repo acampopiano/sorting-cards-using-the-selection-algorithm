@@ -38,16 +38,21 @@ window.onload = function() {
   });
   btnSort.addEventListener("click", function() {
     if (selectedCards.length) {
-      let arrCards = [];
+      let arrCardsNumbers = [];
       selectedCards.map(function(input) {
         let expresion = 'data-indexnumber="([^"]+)"';
         let indexNumber = input.match(expresion);
         var regex = /\d+/g;
         var matches = parseInt(indexNumber[0].match(regex));
-        arrCards.push(matches);
+        arrCardsNumbers.push(matches);
       });
-      let array = arrCards;
-      alert(bubbleSort(array));
+      let orderedArray = bubbleSort(arrCardsNumbers);
+      selectedCards.map(function(input) {
+        let expresion = 'data-indexnumber="([^"]+)"';
+        let indexNumber = input.match(expresion);
+        var regex = /\d+/g;
+        var matches = parseInt(indexNumber[0].match(regex));
+      });
     }
   });
   var contains = function(needle) {
