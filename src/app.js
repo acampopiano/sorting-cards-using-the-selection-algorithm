@@ -38,8 +38,8 @@ window.onload = function() {
   });
   btnSort.addEventListener("click", function() {
     if (selectedCards.length) {
-      let arrCardsNumbers,
-        orderedCards = [];
+      deck.innerHTML = "";
+      var arrCardsNumbers = [];
       selectedCards.map(function(input) {
         let expresion = 'data-indexnumber="([^"]+)"';
         let indexNumber = input.match(expresion);
@@ -54,8 +54,9 @@ window.onload = function() {
           let indexNumber = selectedCards[j].match(expresion);
           var regex = /\d+/g;
           var matches = parseInt(indexNumber[0].match(regex));
-          if (matches === orderedArrayWithBubbleSort[i]) {
-            orderedCards.push(selectedCards[j]);
+          if (matches == orderedArrayWithBubbleSort[i]) {
+            //orderedCards.push(selectedCards[j]);
+            deck.innerHTML += selectedCards[j];
           }
         }
       }
