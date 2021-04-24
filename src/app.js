@@ -2,7 +2,19 @@
 import "bootstrap";
 import "./style.css";
 import "./assets/img/4geeks.ico";
-import { bubbleSort } from "./bubbleSort.js";
+//import { bubbleSort } from "./bubbleSort.js";
+
+function bubble(arr) {
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i] > arr[i + 1]) {
+      var a = arr[i];
+      var b = arr[i + 1];
+      arr[i] = b;
+      arr[i + 1] = a;
+    }
+  }
+  return arr;
+}
 window.onload = function() {
   var positions = [],
     selectedCards = [],
@@ -37,13 +49,15 @@ window.onload = function() {
   });
   btnSort.addEventListener("click", function() {
     if (selectedCards.length) {
+      let arrCards = [];
       selectedCards.map(function(input) {
-        let arrCards = [];
         let expresion = 'data-indexnumber="([^"]+)"';
         let indexNumber = input.match(expresion);
         var regex = /\d+/g;
         var matches = indexNumber[0].match(regex);
+        arrCards.push(matches);
       });
+      alert(bubble(arrCards));
     }
   });
   var contains = function(needle) {
