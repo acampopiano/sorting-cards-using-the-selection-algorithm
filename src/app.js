@@ -23,7 +23,8 @@ window.onload = function() {
   btnDraw.addEventListener("click", function() {
     if (numberOfCards >= 0 && numberOfCards <= 52) {
       deck.innerHTML = "";
-      positions, (selectedCards = []);
+      positions = [];
+      selectedCards = [];
       for (let i = 0; i < numberOfCards; i++) {
         let mf = Math.floor(Math.random() * result.length);
         if (!contains.call(positions, mf)) {
