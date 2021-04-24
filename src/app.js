@@ -7,7 +7,7 @@ window.onload = function() {
     selectedCards = [],
     result = [],
     arrCardsNumbers = [],
-    orderedArrayWithBubbleSort = [];
+    orderedArrayWithSelectionSort = [];
   var matches = document.querySelectorAll("#vCard .card");
   for (var i = 0, l = matches.length; i < l; i++)
     result.push(matches[i].outerHTML);
@@ -38,7 +38,7 @@ window.onload = function() {
     if (selectedCards.length) {
       deck.innerHTML = "";
       arrCardsNumbers = [];
-      orderedArrayWithBubbleSort = [];
+      orderedArrayWithSelectionSort = [];
       selectedCards.map(function(input) {
         let expresion = 'data-indexnumber="([^"]+)"';
         let indexNumber = input.match(expresion);
@@ -46,15 +46,15 @@ window.onload = function() {
         let matches = parseInt(indexNumber[0].match(regex));
         arrCardsNumbers.push(matches);
       });
-      orderedArrayWithBubbleSort = selectSort(arrCardsNumbers);
+      orderedArrayWithSelectionSort = selectSort(arrCardsNumbers);
 
-      for (let i = 0; i < orderedArrayWithBubbleSort.length; i++) {
+      for (let i = 0; i < orderedArrayWithSelectionSort.length; i++) {
         for (let j = 0; j < selectedCards.length; j++) {
           let expresion = 'data-indexnumber="([^"]+)"';
           let indexNumber = selectedCards[j].match(expresion);
           let regex = /\d+/g;
           let matches = parseInt(indexNumber[0].match(regex));
-          if (matches == orderedArrayWithBubbleSort[i]) {
+          if (matches == orderedArrayWithSelectionSort[i]) {
             deck.innerHTML += selectedCards[j];
             selectedCards.splice(j, 1);
           }
