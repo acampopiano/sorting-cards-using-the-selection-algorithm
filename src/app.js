@@ -40,7 +40,7 @@ window.onload = function() {
   });
   btnSort.addEventListener("click", function() {
     if (selectedCards.length) {
-      //deck.innerHTML = "";
+      deck.innerHTML = "";
       arrCardsNumbers = [];
       orderedArrayWithBubbleSort = [];
       selectedCards.map(function(input) {
@@ -59,8 +59,8 @@ window.onload = function() {
           let regex = /\d+/g;
           let matches = parseInt(indexNumber[0].match(regex));
           if (matches == orderedArrayWithBubbleSort[i]) {
-            //orderedCards.push(selectedCards[j]);
             deck.innerHTML += selectedCards[j];
+            selectedCards.splice(j, 1);
           }
         }
       }
