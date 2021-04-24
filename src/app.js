@@ -4,17 +4,6 @@ import "./style.css";
 import "./assets/img/4geeks.ico";
 //import { bubbleSort } from "./bubbleSort.js";
 
-function bubble(arr) {
-  for (var i = 0; i < arr.length; i++) {
-    if (arr[i] > arr[i + 1]) {
-      var a = arr[i];
-      var b = arr[i + 1];
-      arr[i] = b;
-      arr[i + 1] = a;
-    }
-  }
-  return arr;
-}
 window.onload = function() {
   var positions = [],
     selectedCards = [],
@@ -54,9 +43,11 @@ window.onload = function() {
         let expresion = 'data-indexnumber="([^"]+)"';
         let indexNumber = input.match(expresion);
         var regex = /\d+/g;
-        var matches = indexNumber[0].match(regex);
+        var matches = parseInt(indexNumber[0].match(regex));
         arrCards.push(matches);
       });
+      let array = arrCards;
+      alert(bubbleSort(array));
     }
   });
   var contains = function(needle) {
@@ -85,6 +76,24 @@ window.onload = function() {
     }
 
     return indexOf.call(this, needle) > -1;
+  };
+
+  const bubbleSort = arr => {
+    let wall = arr.length - 1; //iniciamos el wall o muro al final del array
+    while (wall > 0) {
+      let index = 0;
+      while (index < wall) {
+        //comparar las posiciones adyacentes, si la correcta es más grande, tenemos que intercambiar
+        if (arr[index] > arr[index + 1]) {
+          let aux = arr[index];
+          arr[index] = arr[index + 1];
+          arr[index + 1] = aux;
+        }
+        index++;
+      }
+      wall--; //disminuir la pared para optimizar
+    }
+    return arr;
   };
   function shuffle(array) {
     var currentIndex = array.length,
