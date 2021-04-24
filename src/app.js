@@ -38,7 +38,8 @@ window.onload = function() {
   });
   btnSort.addEventListener("click", function() {
     if (selectedCards.length) {
-      let arrCardsNumbers = [];
+      let arrCardsNumbers,
+        orderedCards = [];
       selectedCards.map(function(input) {
         let expresion = 'data-indexnumber="([^"]+)"';
         let indexNumber = input.match(expresion);
@@ -46,13 +47,18 @@ window.onload = function() {
         var matches = parseInt(indexNumber[0].match(regex));
         arrCardsNumbers.push(matches);
       });
-      let orderedArray = bubbleSort(arrCardsNumbers);
-      selectedCards.map(function(input) {
-        let expresion = 'data-indexnumber="([^"]+)"';
-        let indexNumber = input.match(expresion);
-        var regex = /\d+/g;
-        var matches = parseInt(indexNumber[0].match(regex));
-      });
+      let orderedArrayWithBubbleSort = bubbleSort(arrCardsNumbers);
+      for (let i = 0; i < orderedArrayWithBubbleSort.length; i++) {
+        for (let j = 0; j < selectedCards.length; j++) {
+          let expresion = 'data-indexnumber="([^"]+)"';
+          let indexNumber = selectedCards[j].match(expresion);
+          var regex = /\d+/g;
+          var matches = parseInt(indexNumber[0].match(regex));
+          if (matches === orderedArrayWithBubbleSort[i]) {
+            orderedCards.push(selectedCards[j]);
+          }
+        }
+      }
     }
   });
   var contains = function(needle) {
