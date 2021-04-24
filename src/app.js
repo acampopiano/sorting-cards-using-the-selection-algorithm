@@ -57,7 +57,6 @@ window.onload = function() {
         var matches = indexNumber[0].match(regex);
         arrCards.push(matches);
       });
-      alert(bubble(arrCards));
     }
   });
   var contains = function(needle) {
