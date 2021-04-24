@@ -39,9 +39,10 @@ window.onload = function() {
     if (selectedCards.length) {
       selectedCards.map(function(input) {
         let arrCards = [];
-        let expresion = /<(.*?)>/g;
-        let indexNumber = input.matchAll(expresion);
-        alert(indexNumber[1]);
+        let expresion = 'data-indexnumber="([^"]+)"';
+        let indexNumber = input.match(expresion);
+        var regex = /\d+/g;
+        var matches = indexNumber[0].match(regex);
       });
     }
   });
